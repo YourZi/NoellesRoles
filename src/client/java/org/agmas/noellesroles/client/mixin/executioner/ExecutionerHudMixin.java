@@ -49,8 +49,7 @@ public abstract class ExecutionerHudMixin {
             context.getMatrices().translate((float) context.getScaledWindowWidth() / 2.0F, (float) context.getScaledWindowHeight() / 2.0F + 6.0F, 0.0F);
             context.getMatrices().scale(0.6F, 0.6F, 1.0F);
             Text name = Text.literal("Executioner Target: " + MinecraftClient.getInstance().player.networkHandler.getPlayerListEntry(executionerPlayerComponent.target).getProfile().getName());
-            PlayerSkinDrawer.draw(context,MinecraftClient.getInstance().player.networkHandler.getPlayerListEntry(executionerPlayerComponent.target).getSkinTextures().texture(), (-renderer.getWidth(name) / 2), 32,16);
-            context.drawTextWithShadow(renderer, name, (-renderer.getWidth(name) / 2) + 8, 32, Colors.RED);
+            context.drawTextWithShadow(renderer, name, -renderer.getWidth(name) / 2, 32, Colors.RED);
 
             context.getMatrices().pop();
         }
@@ -61,11 +60,9 @@ public abstract class ExecutionerHudMixin {
                 if (MinecraftClient.getInstance().player.networkHandler.getPlayerListEntry(executionerPlayerComponent.target) == null)
                     return;
                 context.getMatrices().push();
-                context.getMatrices().translate((float) context.getScaledWindowWidth() / 2.0F, (float) context.getScaledWindowHeight() / 2.0F + 6.0F, 0.0F);
-                context.getMatrices().scale(0.6F, 0.6F, 1.0F);
                 Text name = Text.literal("Executioner Target: " + MinecraftClient.getInstance().player.networkHandler.getPlayerListEntry(executionerPlayerComponent.target).getProfile().getName());
-                PlayerSkinDrawer.draw(context,MinecraftClient.getInstance().player.networkHandler.getPlayerListEntry(executionerPlayerComponent.target).getSkinTextures().texture(), (-renderer.getWidth(name) / 2), 32,16);
-                context.drawTextWithShadow(renderer, name, (-renderer.getWidth(name) / 2) + 8, 32, Colors.RED);
+                PlayerSkinDrawer.draw(context,MinecraftClient.getInstance().player.networkHandler.getPlayerListEntry(executionerPlayerComponent.target).getSkinTextures().texture(), 2, context.getScaledWindowHeight()-14,12);
+                context.drawTextWithShadow(renderer, name, 18, context.getScaledWindowHeight()-12, Colors.RED);
 
                 context.getMatrices().pop();
                 return;
